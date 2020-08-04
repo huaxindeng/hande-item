@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hand.crud.dao.ItemMapper">
+  <resultMap id="BaseResultMap" type="com.hand.crud.bean.Item">
+    <id column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="item_uom" jdbcType="VARCHAR" property="itemUom" />
+    <result column="item_description" jdbcType="VARCHAR" property="itemDescription" />
+    <result column="start_active_date" jdbcType="DATE" property="startActiveDate" />
+    <result column="end_active_date" jdbcType="DATE" property="endActiveDate" />
+    <result column="enabled_flag" jdbcType="BIT" property="enabledFlag" />
+    <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
+    <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="created_by" jdbcType="BIGINT" property="createdBy" />
+    <result column="last_updated_by" jdbcType="BIGINT" property="lastUpdatedBy" />
+    <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+--     item_id, item_code, item_uom, item_description, DATE_FORMAT(start_active_date,'%Y-%m-%d') ,DATE_FORMAT(end_active_date,'%Y-%m-%d'),
+    item_id, item_code, item_uom, item_description, start_active_date,end_active_date,
+    enabled_flag, object_version_number, creation_date, created_by, last_updated_by, 
+    last_update_date
+  </sql>
+  <select id="selectByExample" parameterType="com.hand.crud.bean.ItemExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    item_id, item_code, item_uom, item_description, start_active_date ,end_active_date,
+    enabled_flag, object_version_number, creation_date, created_by, last_updated_by,
+    last_update_date
+    from ssm_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ssm_item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </select>
+  <select id="selectBySelection" parameterType="com.hand.crud.bean.Item" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ssm_item
+    <where>
+      <if test="itemCode != null">
+        and item_code like #{itemCode}
+      </if>
+      <if test="itemDescription != null">
+        and item_description like #{itemDescription}
+      </if>
+      <if test="itemUom != null">
+        and item_uom = #{itemUom}
+      </if>
+      <if test="startActiveDate != null">
+        and start_active_date = #{startActiveDate}
+      </if>
+      <if test="endActiveDate != null">
+        and end_active_date = #{endActiveDate}
+      </if>
+      <if test="enabledFlag != null">
+        and enabled_flag = #{enabledFlag}
+      </if>
+    </where>
+    <trim prefix="order by" prefixOverrides=",">
+      <if test="itemCode != null">
+        ,item_code
+      </if>
+      <if test="startActiveDate != null">
+        ,start_active_date
+      </if>
+      <if test="endActiveDate != null">
+        ,end_active_date
+      </if>
+    </trim>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ssm_item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hand.crud.bean.ItemExample">
+    delete from ssm_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hand.crud.bean.Item">
+    insert into ssm_item (item_id, item_code, item_uom, 
+      item_description, start_active_date, end_active_date, 
+      enabled_flag, object_version_number, creation_date, 
+      created_by, last_updated_by, last_update_date
+      )
+    values (#{itemId,jdbcType=BIGINT}, #{itemCode,jdbcType=VARCHAR}, #{itemUom,jdbcType=VARCHAR}, 
+      #{itemDescription,jdbcType=VARCHAR}, #{startActiveDate,jdbcType=DATE}, #{endActiveDate,jdbcType=DATE}, 
+      #{enabledFlag,jdbcType=BIT}, #{objectVersionNumber,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=BIGINT}, #{lastUpdatedBy,jdbcType=BIGINT}, #{lastUpdateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hand.crud.bean.Item">
+    insert into ssm_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+
+        item_code,
+      <if test="itemUom != null">
+        item_uom,
+      </if>
+      <if test="itemDescription != null">
+        item_description,
+      </if>
+      <if test="startActiveDate != null">
+        start_active_date,
+      </if>
+      <if test="endActiveDate != null">
+        end_active_date,
+      </if>
+      <if test="enabledFlag != null">
+        enabled_flag,
+      </if>
+      <if test="objectVersionNumber != null">
+        object_version_number,
+      </if>
+      <if test="creationDate != null">
+        creation_date,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="lastUpdatedBy != null">
+        last_updated_by,
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+
+        concat('ITEM00',(select auto_increment from information_schema.`TABLES` where table_name='ssm_item' )),
+      <if test="itemUom != null">
+        #{itemUom,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDescription != null">
+        #{itemDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="startActiveDate != null">
+        #{startActiveDate,jdbcType=DATE},
+      </if>
+      <if test="endActiveDate != null">
+        #{endActiveDate,jdbcType=DATE},
+      </if>
+      <if test="enabledFlag != null">
+        #{enabledFlag,jdbcType=BIT},
+      </if>
+      <if test="objectVersionNumber != null">
+        #{objectVersionNumber,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdatedBy != null">
+        #{lastUpdatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="com.hand.crud.bean.Item">
+    insert into ssm_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="itemCode!=null">
+        item_code,
+      </if>
+      <if test="itemUom != null">
+        item_uom,
+      </if>
+      <if test="itemDescription != null">
+        item_description,
+      </if>
+      <if test="startActiveDate != null">
+        start_active_date,
+      </if>
+      <if test="endActiveDate != null">
+        end_active_date,
+      </if>
+      <if test="enabledFlag != null">
+        enabled_flag,
+      </if>
+      <if test="objectVersionNumber != null">
+        object_version_number,
+      </if>
+      <if test="creationDate != null">
+        creation_date,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="lastUpdatedBy != null">
+        last_updated_by,
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+      <if test="itemId!=null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemCode!=null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+
+      <if test="itemUom != null">
+        #{itemUom,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDescription != null">
+        #{itemDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="startActiveDate != null">
+        #{startActiveDate,jdbcType=DATE},
+      </if>
+      <if test="endActiveDate != null">
+        #{endActiveDate,jdbcType=DATE},
+      </if>
+      <if test="enabledFlag != null">
+        #{enabledFlag,jdbcType=BIT},
+      </if>
+      <if test="objectVersionNumber != null">
+        #{objectVersionNumber,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdatedBy != null">
+        #{lastUpdatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hand.crud.bean.ItemExample" resultType="java.lang.Long">
+    select count(*) from ssm_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ssm_item
+    <set>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.itemCode != null">
+        item_code = #{record.itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemUom != null">
+        item_uom = #{record.itemUom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemDescription != null">
+        item_description = #{record.itemDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startActiveDate != null">
+        start_active_date = #{record.startActiveDate,jdbcType=DATE},
+      </if>
+      <if test="record.endActiveDate != null">
+        end_active_date = #{record.endActiveDate,jdbcType=DATE},
+      </if>
+      <if test="record.enabledFlag != null">
+        enabled_flag = #{record.enabledFlag,jdbcType=BIT},
+      </if>
+      <if test="record.objectVersionNumber != null">
+        object_version_number = #{record.objectVersionNumber,jdbcType=BIGINT},
+      </if>
+      <if test="record.creationDate != null">
+        creation_date = #{record.creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.lastUpdatedBy != null">
+        last_updated_by = #{record.lastUpdatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.lastUpdateDate != null">
+        last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ssm_item
+    set item_id = #{record.itemId,jdbcType=BIGINT},
+      item_code = #{record.itemCode,jdbcType=VARCHAR},
+      item_uom = #{record.itemUom,jdbcType=VARCHAR},
+      item_description = #{record.itemDescription,jdbcType=VARCHAR},
+      start_active_date = #{record.startActiveDate,jdbcType=DATE},
+      end_active_date = #{record.endActiveDate,jdbcType=DATE},
+      enabled_flag = #{record.enabledFlag,jdbcType=BIT},
+      object_version_number = #{record.objectVersionNumber,jdbcType=BIGINT},
+      creation_date = #{record.creationDate,jdbcType=TIMESTAMP},
+      created_by = #{record.createdBy,jdbcType=BIGINT},
+      last_updated_by = #{record.lastUpdatedBy,jdbcType=BIGINT},
+      last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hand.crud.bean.Item">
+    update ssm_item
+    <set>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemUom != null">
+        item_uom = #{itemUom,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDescription != null">
+        item_description = #{itemDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="startActiveDate != null">
+        start_active_date = #{startActiveDate,jdbcType=DATE},
+      </if>
+      <if test="endActiveDate != null">
+        end_active_date = #{endActiveDate,jdbcType=DATE},
+      </if>
+      <if test="enabledFlag != null">
+        enabled_flag = #{enabledFlag,jdbcType=BIT},
+      </if>
+      <if test="objectVersionNumber != null">
+        object_version_number = #{objectVersionNumber,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdatedBy != null">
+        last_updated_by = #{lastUpdatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hand.crud.bean.Item">
+    update ssm_item
+    set item_code = #{itemCode,jdbcType=VARCHAR},
+      item_uom = #{itemUom,jdbcType=VARCHAR},
+      item_description = #{itemDescription,jdbcType=VARCHAR},
+      start_active_date = #{startActiveDate,jdbcType=DATE},
+      end_active_date = #{endActiveDate,jdbcType=DATE},
+      enabled_flag = #{enabledFlag,jdbcType=BIT},
+      object_version_number = #{objectVersionNumber,jdbcType=BIGINT},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=BIGINT},
+      last_updated_by = #{lastUpdatedBy,jdbcType=BIGINT},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP}
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+</mapper>

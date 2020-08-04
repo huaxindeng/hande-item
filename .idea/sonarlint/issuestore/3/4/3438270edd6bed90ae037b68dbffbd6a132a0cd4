@@ -1,0 +1,20 @@
+
+`
+java:S11929"KDefine a constant instead of duplicating this literal "yyyy-MM-dd" 3 times.(¬ü¯-
+]
+java:S1128"BRemove this unused import 'org.mybatis.spring.SqlSessionTemplate'.(Æ¸–âüÿÿÿÿ
+c	java:S100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÜôĞ
+S	java:S106?"9Replace this use of System.out or System.err by a logger.(ÍÎôÒıÿÿÿÿ
+N	java:S106Z"9Replace this use of System.out or System.err by a logger.(Â’£ 
+N	java:S106]"9Replace this use of System.out or System.err by a logger.(×ÊóÕ
+N	java:S106b"9Replace this use of System.out or System.err by a logger.(ËıïÄ
+_
+java:S2153b"IRemove the boxing to "Boolean"; The argument is already of the same type.(ËıïÄ
+7
+java:S2129b"!Remove this "Boolean" constructor(ËıïÄ
+E
+java:S1874b"/Remove this use of "Boolean"; it is deprecated.(ËıïÄ
+V	java:S125#"<This block of commented-out lines of code should be removed.(‰‘öşÿÿÿÿ
+Q	java:S125-"<This block of commented-out lines of code should be removed.(ï¸Î´
+V	java:S1252"<This block of commented-out lines of code should be removed.(Ö÷ışÿÿÿÿ
+Q	java:S125;"<This block of commented-out lines of code should be removed.(µ¢Èß

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hand.crud.dao.ItemMapperTest">
+
+    <insert id="insertTest" useGeneratedKeys="true" keyProperty="itemId">
+        insert into ssm_item (item_code, item_uom,
+          item_description, start_active_date, end_active_date,
+          enabled_flag
+          )
+        values (#{itemCode,jdbcType=VARCHAR}, #{itemUom,jdbcType=VARCHAR},
+          #{itemDescription,jdbcType=VARCHAR}, #{startActiveDate,jdbcType=DATE}, #{endActiveDate,jdbcType=DATE},
+          #{enabledFlag,jdbcType=BIT}
+          )
+    </insert>
+</mapper>

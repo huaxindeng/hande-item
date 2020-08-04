@@ -1,0 +1,34 @@
+
+Z	java:S106q"9Replace this use of System.out or System.err by a logger.(Åêµúÿÿÿÿ8…à‰».
+N	java:S106p"9Replace this use of System.out or System.err by a logger.(¸­ùü
+c
+java:S1128"MRemove this unused import 'sun.plugin.viewer.context.IExplorerAppletContext'.(ã¬şì
+l	java:S117À"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÚÇêûÿÿÿÿ
+s	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èô÷Œûÿÿÿÿ8…à‰».
+Z	java:S106P"9Replace this use of System.out or System.err by a logger.(İ¬Ï¤øÿÿÿÿ8…à‰».
+[	java:S106Š"9Replace this use of System.out or System.err by a logger.(Åº‡ßûÿÿÿÿ8…à‰».
+r
+java:S1192J"PDefine a constant instead of duplicating this literal "itemDescription" 6 times.(‹‘×»şÿÿÿÿ8…à‰».
+j
+java:S1192M"HDefine a constant instead of duplicating this literal "itemUom" 3 times.(å¤ß®øÿÿÿÿ8…à‰».
+U	java:S106s"9Replace this use of System.out or System.err by a logger.(Ñ§÷ê8…à‰».
+N	java:S1060"9Replace this use of System.out or System.err by a logger.(¸­ùü
+r
+java:S1192P"PDefine a constant instead of duplicating this literal "startActiveDate" 4 times.(İ¬Ï¤øÿÿÿÿ8…à‰».
+S	java:S1062"9Replace this use of System.out or System.err by a logger.(›’İ—şÿÿÿÿ
+j
+java:S1192U"NDefine a constant instead of duplicating this literal "endActiveDate" 3 times.(ñ‰µ8…à‰».
+k
+java:S1192E"IDefine a constant instead of duplicating this literal "itemCode" 6 times.(‡êØÚÿÿÿÿÿ8…à‰».
+n
+java:S1192Y"LDefine a constant instead of duplicating this literal "enabledFlag" 3 times.(ä˜Åúÿÿÿÿ8…à‰».
+g
+java:S1192R"KDefine a constant instead of duplicating this literal "yyyy-MM-dd" 3 times.(¬ü¯-8…à‰».
+Z	java:S106^"9Replace this use of System.out or System.err by a logger.(ÓÍä¨ÿÿÿÿÿ8…à‰».
+O	java:S106‰"9Replace this use of System.out or System.err by a logger.(Œ´ª·
+[	java:S106®"9Replace this use of System.out or System.err by a logger.(¿¹ıŸÿÿÿÿÿ8…à‰».
+K
+java:S1191"5Use classes from the Java API instead of Sun classes.(ã¬şì
+t
+java:S3776?"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ê„áşÿÿÿÿ8…à‰».
+S	java:S1061"9Replace this use of System.out or System.err by a logger.(Åêµúÿÿÿÿ
