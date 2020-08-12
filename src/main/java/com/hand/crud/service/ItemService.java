@@ -32,6 +32,7 @@ public class ItemService {
     }
 
     public int saveItem(Item item){
+        item.setObjectVersionNumber((long)1);
         return itemMapper.insertSelective(item);
     }
 
@@ -42,6 +43,9 @@ public class ItemService {
 
     @Transactional(readOnly = false,propagation = Propagation.REQUIRED)
     public int updateItem(Item item){
+        System.out.println("-------------ItemService.updateItem----------");
+        item.setObjectVersionNumber(1L);
+        System.out.println(item.toString());
         return itemMapper.updateByPrimaryKeySelective(item);
     }
 

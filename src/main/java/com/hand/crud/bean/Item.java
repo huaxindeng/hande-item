@@ -27,6 +27,8 @@ public class Item {
 
     private Long objectVersionNumber;
 
+    private Long objectVersionNumberGrap;
+
     private Date creationDate;
 
     private Long createdBy;
@@ -158,5 +160,13 @@ public class Item {
                 ", lastUpdatedBy=" + lastUpdatedBy +
                 ", lastUpdateDate=" + lastUpdateDate +
                 '}';
+    }
+
+    public void setObjectVersionNumberGrap() {
+        this.objectVersionNumberGrap = 1L;
+    }
+
+    public Long getObjectVersionNumberGrap() {
+        return objectVersionNumberGrap;
     }
 }

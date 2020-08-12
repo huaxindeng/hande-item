@@ -1,49 +1,48 @@
 
-e
-java:S1192”"IDefine a constant instead of duplicating this literal "itemUom" 12 times.(ïôÉòüÿÿÿÿ
-f
-java:S1192Ü"ODefine a constant instead of duplicating this literal "endActiveDate" 10 times.(ÂÏ›
-g
-java:S1192Ä"PDefine a constant instead of duplicating this literal "lastUpdateDate" 10 times.(—üŞğ
-m
-java:S1192Ú"QDefine a constant instead of duplicating this literal "itemDescription" 12 times.(Ô¯‰Èüÿÿÿÿ
-f
-java:S1192Î"JDefine a constant instead of duplicating this literal "itemCode" 12 times.(›ïŠúÿÿÿÿÿ
-f
-java:S1192ˆ"ODefine a constant instead of duplicating this literal "lastUpdatedBy" 10 times.(ôµ¥ÿ
+k
+java:S1192a"PDefine a constant instead of duplicating this literal " cannot be null" 4 times.(õÜ—ºşÿÿÿÿ
 g
 java:S1192Ì"KDefine a constant instead of duplicating this literal "createdBy" 10 times.(¦ç“üÿÿÿÿÿ
 e
 java:S1192"NDefine a constant instead of duplicating this literal "creationDate" 10 times.(—‹Ùİ
-m
-java:S1192 "QDefine a constant instead of duplicating this literal "startActiveDate" 10 times.(„ıšüÿÿÿÿ
-q
-java:S1192Ô"UDefine a constant instead of duplicating this literal "objectVersionNumber" 10 times.(Ä¯š“ùÿÿÿÿ
 d
 java:S1192˜"MDefine a constant instead of duplicating this literal "enabledFlag" 10 times.(ø‚ñ¹
-k
-java:S1192a"PDefine a constant instead of duplicating this literal " cannot be null" 4 times.(õÜ—ºşÿÿÿÿ
-^
-java:S1192’"HDefine a constant instead of duplicating this literal "itemId" 10 times.(§ç¨W
-`	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
-`	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
-Z	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
-
-`	java:S112o"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
-[	java:S112v"FDefine and throw a dedicated exception instead of using a generic one.(Áš¹
-[	java:S112‚"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
-
-S
-java:S11553">Use isEmpty() to check whether the collection is empty or not.(Á½¼s
-Y
-java:S1155M">Use isEmpty() to check whether the collection is empty or not.(í´Õûüÿÿÿÿ
-T
-java:S1155u">Use isEmpty() to check whether the collection is empty or not.(ÍÃ‘Æ
-v
-java:S1488:"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
-n
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
-o
-java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
 n
 java:S2293x"YReplace the type specification in this constructor call with the diamond operator ("<>").(ãÍæ2
+f
+java:S1192Î"JDefine a constant instead of duplicating this literal "itemCode" 12 times.(›ïŠúÿÿÿÿÿ
+e
+java:S1192”"IDefine a constant instead of duplicating this literal "itemUom" 12 times.(ïôÉòüÿÿÿÿ
+`	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+`	java:S112o"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
+Y
+java:S1155M">Use isEmpty() to check whether the collection is empty or not.(í´Õûüÿÿÿÿ
+q
+java:S1192Ô"UDefine a constant instead of duplicating this literal "objectVersionNumber" 10 times.(Ä¯š“ùÿÿÿÿ
+f
+java:S1192Ü"ODefine a constant instead of duplicating this literal "endActiveDate" 10 times.(ÂÏ›
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
+[	java:S112‚"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+f
+java:S1192ˆ"ODefine a constant instead of duplicating this literal "lastUpdatedBy" 10 times.(ôµ¥ÿ
+m
+java:S1192 "QDefine a constant instead of duplicating this literal "startActiveDate" 10 times.(„ıšüÿÿÿÿ
+^
+java:S1192’"HDefine a constant instead of duplicating this literal "itemId" 10 times.(§ç¨W
+S
+java:S11553">Use isEmpty() to check whether the collection is empty or not.(Á½¼s
+`	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
+v
+java:S1488:"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
+T
+java:S1155u">Use isEmpty() to check whether the collection is empty or not.(ÍÃ‘Æ
+g
+java:S1192Ä"PDefine a constant instead of duplicating this literal "lastUpdateDate" 10 times.(—üŞğ
+o
+java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
+m
+java:S1192Ú"QDefine a constant instead of duplicating this literal "itemDescription" 12 times.(Ô¯‰Èüÿÿÿÿ
+[	java:S112v"FDefine and throw a dedicated exception instead of using a generic one.(Áš¹
+Z	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤

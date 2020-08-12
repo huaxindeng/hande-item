@@ -1,34 +1,65 @@
 
-Z	java:S106q"9Replace this use of System.out or System.err by a logger.(Åêµúÿÿÿÿ8…à‰».
-N	java:S106p"9Replace this use of System.out or System.err by a logger.(¸­ùü
-c
-java:S1128"MRemove this unused import 'sun.plugin.viewer.context.IExplorerAppletContext'.(ã¬şì
-l	java:S117À"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÚÇêûÿÿÿÿ
-s	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èô÷Œûÿÿÿÿ8…à‰».
-Z	java:S106P"9Replace this use of System.out or System.err by a logger.(İ¬Ï¤øÿÿÿÿ8…à‰».
-[	java:S106Š"9Replace this use of System.out or System.err by a logger.(Åº‡ßûÿÿÿÿ8…à‰».
-r
-java:S1192J"PDefine a constant instead of duplicating this literal "itemDescription" 6 times.(‹‘×»şÿÿÿÿ8…à‰».
-j
-java:S1192M"HDefine a constant instead of duplicating this literal "itemUom" 3 times.(å¤ß®øÿÿÿÿ8…à‰».
-U	java:S106s"9Replace this use of System.out or System.err by a logger.(Ñ§÷ê8…à‰».
-N	java:S1060"9Replace this use of System.out or System.err by a logger.(¸­ùü
-r
-java:S1192P"PDefine a constant instead of duplicating this literal "startActiveDate" 4 times.(İ¬Ï¤øÿÿÿÿ8…à‰».
-S	java:S1062"9Replace this use of System.out or System.err by a logger.(›’İ—şÿÿÿÿ
-j
-java:S1192U"NDefine a constant instead of duplicating this literal "endActiveDate" 3 times.(ñ‰µ8…à‰».
-k
-java:S1192E"IDefine a constant instead of duplicating this literal "itemCode" 6 times.(‡êØÚÿÿÿÿÿ8…à‰».
-n
-java:S1192Y"LDefine a constant instead of duplicating this literal "enabledFlag" 3 times.(ä˜Åúÿÿÿÿ8…à‰».
+L
+java:S3740k"/Provide the parametrized type for this generic.(ßıôµ8Û—™İ½.
 g
-java:S1192R"KDefine a constant instead of duplicating this literal "yyyy-MM-dd" 3 times.(¬ü¯-8…à‰».
-Z	java:S106^"9Replace this use of System.out or System.err by a logger.(ÓÍä¨ÿÿÿÿÿ8…à‰».
-O	java:S106‰"9Replace this use of System.out or System.err by a logger.(Œ´ª·
-[	java:S106®"9Replace this use of System.out or System.err by a logger.(¿¹ıŸÿÿÿÿÿ8…à‰».
-K
-java:S1191"5Use classes from the Java API instead of Sun classes.(ã¬şì
+java:S1192P"KDefine a constant instead of duplicating this literal "yyyy-MM-dd" 5 times.(¬ü¯-8Û—™İ½.
+j
+java:S1128"MRemove this unused import 'sun.plugin.viewer.context.IExplorerAppletContext'.(ã¬şì8ÿ€—İ½.
+q
+java:S4488½"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(¯ßªôıÿÿÿÿ8Û—™İ½.
+V	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(Œ´ª·8ÿ€—İ½.
+j
+java:S1192S"NDefine a constant instead of duplicating this literal "endActiveDate" 6 times.(ñ‰µ8Û—™İ½.
+U	java:S1060"9Replace this use of System.out or System.err by a logger.(¸­ùü8ÿ€—İ½.
+[	java:S106‰"9Replace this use of System.out or System.err by a logger.(Åº‡ßûÿÿÿÿ8Û—™İ½.
+U	java:S106o"9Replace this use of System.out or System.err by a logger.(¸­ùü8Ê Òà½.
+U	java:S106r"9Replace this use of System.out or System.err by a logger.(Ñ§÷ê8Û—™İ½.
+Z	java:S106p"9Replace this use of System.out or System.err by a logger.(Åêµúÿÿÿÿ8Û—™İ½.
+L
+java:S3740."/Provide the parametrized type for this generic.(ÚêÊ8ÿ€—İ½.
+‰
+java:S1130)"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(êê”Ê8ÿ€—İ½.
+s	java:S117Â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èô÷Œûÿÿÿÿ8Û—™İ½.
+Z	java:S106\"9Replace this use of System.out or System.err by a logger.(ÓÍä¨ÿÿÿÿÿ8Û—™İ½.
+R
+java:S1191"5Use classes from the Java API instead of Sun classes.(ã¬şì8ÿ€—İ½.
+n
+java:S1192W"LDefine a constant instead of duplicating this literal "enabledFlag" 6 times.(ä˜Åúÿÿÿÿ8Û—™İ½.
+j
+java:S1192K"HDefine a constant instead of duplicating this literal "itemUom" 6 times.(å¤ß®øÿÿÿÿ8Û—™İ½.
+r
+java:S1192N"PDefine a constant instead of duplicating this literal "startActiveDate" 7 times.(İ¬Ï¤øÿÿÿÿ8Û—™İ½.
+k
+java:S1192C"IDefine a constant instead of duplicating this literal "itemCode" 9 times.(‡êØÚÿÿÿÿÿ8Û—™İ½.
+l
+java:S3252,"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(·ÈËø8ÿ€—İ½.
+k
+java:S4488˜"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ğò˜ııÿÿÿÿ8Û—™İ½.
 t
-java:S3776?"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ê„áşÿÿÿÿ8…à‰».
-S	java:S1061"9Replace this use of System.out or System.err by a logger.(Åêµúÿÿÿÿ
+java:S3776:"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ê„áşÿÿÿÿ8ÿ€—İ½.
+u
+java:S3776Ñ"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¦·äşÿÿÿÿ8İ—öá½.
+r
+java:S1192H"PDefine a constant instead of duplicating this literal "itemDescription" 9 times.(‹‘×»şÿÿÿÿ8Û—™İ½.
+s	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÚÇêûÿÿÿÿ8ÿ€—İ½.
+”
+java:S1130)"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(êê”Ê8ÿ€—İ½.
+[	java:S106ï"9Replace this use of System.out or System.err by a logger.(ÓÍä¨ÿÿÿÿÿ8İ—öá½.
+Z	java:S1062"9Replace this use of System.out or System.err by a logger.(›’İ—şÿÿÿÿ8ÿ€—İ½.
+l
+java:S3252^"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(Šóüš8Û—™İ½.
+m
+java:S2095ó"JUse try-with-resources or close this "HSSFWorkbook" in a "finally" clause.(ĞÅ±Ìøÿÿÿÿ8ª“ôá½.
+L
+java:S3740."/Provide the parametrized type for this generic.(ÚêÊ8ÿ€—İ½.
+k
+java:S4488«"HReplace "@RequestMapping(method = RequestMethod.PUT)" with "@PutMapping"(”˜óÑşÿÿÿÿ8Û—™İ½.
+[	java:S106®"9Replace this use of System.out or System.err by a logger.(¿¹ıŸÿÿÿÿÿ8Û—™İ½.
+[
+java:S1155q">Use isEmpty() to check whether the collection is empty or not.(ËÒ¿ê8Û—™İ½.
+Z	java:S106N"9Replace this use of System.out or System.err by a logger.(İ¬Ï¤øÿÿÿÿ8Û—™İ½.
+Z	java:S1061"9Replace this use of System.out or System.err by a logger.(Åêµúÿÿÿÿ8ÿ€—İ½.
+L
+java:S3740k"/Provide the parametrized type for this generic.(ßıôµ8Û—™İ½.
+m
+java:S4488€"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(è’íøÿÿÿÿ8Û—™İ½.

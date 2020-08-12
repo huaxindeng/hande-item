@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -409,7 +411,7 @@
                         <tr>
                             <td ><input type="checkbox" class="check_item"/></td>
                             <td class="text-center">${item.itemCode }</td>
-                            <td class="text-center">${item.itemDescription }</td>
+                            <td class="text-center" >${fn:substring(item.itemDescription,0 ,10 )}</td>
                             <td class="text-center">${item.itemUom }</td>
                             <td class="text-center"><fmt:formatDate value="${item.startActiveDate }" pattern="yyyy-MM-dd" /></td>
                             <td class="text-center"><fmt:formatDate value="${item.endActiveDate }" pattern="yyyy-MM-dd" /></td>
@@ -438,15 +440,27 @@
                             </div>
                         </td>
                         <td></td>
+                        <!--每页行数-->
+                        <td>
+                            每页行数：
+                        </td>
+                        <td>
+                            <select id="pageSize" name="pageSize" >
+                                <option value="${pageInfo.pageSize}">${pageInfo.pageSize}</option>
+                                <option  value="${APP_PATH }/select?pn=1&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=3">3</option>
+                                <option  value="${APP_PATH }/select?pn=1&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=5">5</option>
+                                <option  value="${APP_PATH }/select?pn=1&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=10">10</option>
+                            </select>
+                        </td>
                         <td  colspan="3">
                             <!-- 分页条信息 -->
                             <div class="col-md-12">
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination">
 
-                                        <li><a href="${APP_PATH }/select?pn=1&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}"}  >首页</a></li>
+                                        <li><a href="${APP_PATH }/select?pn=1&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=${pageInfo.pageSize}"  >首页</a></li>
                                         <c:if test="${pageInfo.hasPreviousPage }">
-                                            <li><a href="${APP_PATH }/select?pn=${pageInfo.pageNum-1}&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}"
+                                            <li><a href="${APP_PATH }/select?pn=${pageInfo.pageNum-1}&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=${pageInfo.pageSize}"
                                                    aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
                                             </a></li>
                                         </c:if>
@@ -457,16 +471,16 @@
                                                 <li class="active"><a href="#">${page_Num }</a></li>
                                             </c:if>
                                             <c:if test="${page_Num != pageInfo.pageNum }">
-                                                <li><a href="${APP_PATH }/select?pn=${page_Num }&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}">${page_Num }</a></li>
+                                                <li><a href="${APP_PATH }/select?pn=${page_Num }&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=${pageInfo.pageSize}">${page_Num }</a></li>
                                             </c:if>
 
                                         </c:forEach>
                                         <c:if test="${pageInfo.hasNextPage }">
-                                            <li><a href="${APP_PATH }/select?pn=${pageInfo.pageNum+1 }&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}"
+                                            <li><a href="${APP_PATH }/select?pn=${pageInfo.pageNum+1 }&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=${pageInfo.pageSize}"
                                                    aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                                             </a></li>
                                         </c:if>
-                                        <li><a href="${APP_PATH }/select?pn=${pageInfo.pages}&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}">末页</a></li>
+                                        <li><a href="${APP_PATH }/select?pn=${pageInfo.pages}&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=${pageInfo.pageSize}">末页</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -651,11 +665,11 @@
                         //alert(result.msg);
                         //1、关闭对话框
                         $("#itemUpdateModal").modal("hide");
-                        //2、回到本页面
-                        to_page(currentPage);
+                        //2. 回到当前页面
+                        to_page();
                     }
                 });
-                window.location.href="/items";
+                // window.location.href = "/items";
             });
 
             //单个删除
@@ -672,12 +686,16 @@
                         success:function(result){
                             alert(result.msg);
                             //回到本页
-                            to_page(currentPage);
+                            to_page();
                         }
                     });
                 }
-                window.location.href="/items";
+                // window.location.href="/items";
             });
+
+            function to_page(){
+                window.location.href = "${APP_PATH }/select?pn=${pageInfo.pageNum }&itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}&pageSize=${pageInfo.pageSize}";
+            }
 
             //完成全选/全不选功能
             $("#check_all").click(function(){
@@ -705,30 +723,45 @@
                     //组装员工id字符串
                     del_idstr += $(this).parents("tr").find(".delete_btn").attr("del-id")+"-";
                 });
-                //去除empNames多余的,
-                itemCodes = itemCodes.substring(0, itemCodes.length-1);
-                //去除删除的id多余的-
-                del_idstr = del_idstr.substring(0, del_idstr.length-1);
-                if(confirm("确认删除【"+del_idstr+"】吗？")){
-                    //发送ajax请求删除
-                    $.ajax({
-                        url:"${APP_PATH}/item/"+del_idstr,
-                        type:"DELETE",
-                        success:function(result){
-                            alert(result.msg);
-                            //回到当前页面
-                            to_page(currentPage);
-                        }
-                    });
+                if('' == del_idstr)
+                {
+                    alert("请选择要删除的物料")
                 }
-                window.location.href="/items";
+                else{
+                    //去除empNames多余的,
+                    itemCodes = itemCodes.substring(0, itemCodes.length-1);
+                    //去除删除的id多余的-
+                    del_idstr = del_idstr.substring(0, del_idstr.length-1);
+                    if(confirm("确认删除【"+del_idstr+"】吗？")){
+                        //发送ajax请求删除
+                        $.ajax({
+                            url:"${APP_PATH}/item/"+del_idstr,
+                            type:"DELETE",
+                            success:function(result){
+                                alert(result.msg);
+                                //回到当前页面
+                                to_page();
+                            }
+                        });
+                    }
+                    // window.location.href="/items";
+                }
+
             });
 
 
             //数据导出链接
             function downloadfile(){
-                window.location.href="/itemExcelDownloads";
+                window.location.href="/itemExcelDownloads?itemCode=${selection.itemCode}&itemDescription=${selection.itemDescription}&itemUom=${selection.itemUom}&startActiveDate=<fmt:formatDate value="${selection.startActiveDate }" pattern="yyyy-MM-dd" />&endActiveDate=<fmt:formatDate value="${selection.endActiveDate }" pattern="yyyy-MM-dd" />&enabledFlag=${selection.enabledFlag}";
             }
+
+            //改变分页显示数量
+            $('#pageSize').change(function () {
+                // alert($(this).children('option:selected').val())
+                window.location.href = $(this).children('option:selected').val()
+            })
+
+
 
 
 

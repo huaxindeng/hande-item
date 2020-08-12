@@ -402,9 +402,7 @@
       <if test="enabledFlag != null">
         enabled_flag = #{enabledFlag,jdbcType=BIT},
       </if>
-      <if test="objectVersionNumber != null">
-        object_version_number = #{objectVersionNumber,jdbcType=BIGINT},
-      </if>
+        object_version_number = object_version_number + #{objectVersionNumber},
       <if test="creationDate != null">
         creation_date = #{creationDate,jdbcType=TIMESTAMP},
       </if>

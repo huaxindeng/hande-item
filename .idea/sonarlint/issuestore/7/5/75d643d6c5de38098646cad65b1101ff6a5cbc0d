@@ -1,5 +1,5 @@
 
 
-java:S2637F"n"itemDescription" is marked "javax.validation.constraints.NotNull" but is not initialized in this constructor.(Ψη½χόÿÿÿÿ8±”ξ‘».
+java:S2637H"n"itemDescription" is marked "javax.validation.constraints.NotNull" but is not initialized in this constructor.(Ψη½χόÿÿÿÿ8±”ξ‘».
 x
-java:S2637C"V"itemDescription" is marked "javax.validation.constraints.NotNull" but is set to null.(‚ι„ςϊÿÿÿÿ8±”ξ‘».
+java:S2637E"V"itemDescription" is marked "javax.validation.constraints.NotNull" but is set to null.(‚ι„ςϊÿÿÿÿ8±”ξ‘».

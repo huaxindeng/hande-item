@@ -37,13 +37,13 @@ public class ItemController {
     //首页展示所有物料
     @RequestMapping("/items")
     public String getItems(@RequestParam(value = "pn",defaultValue = "1")Integer pn,
-                           Model model,HttpSession session) throws ServletException, IOException {
+                           Model model,HttpSession session,
+                           @RequestParam(value="pageSize",defaultValue = "5")Integer pageSize) throws ServletException, IOException {
 
 
         PageHelper.startPage(pn,3);
         List<Item> items = itemService.getAll();
-
-        PageInfo pageInfo = new PageInfo(items,5);
+        PageInfo pageInfo = new PageInfo(items,pageSize);
         model.addAttribute("pageInfo",pageInfo);
         System.out.println(pageInfo.toString());
         System.out.println("************************");
@@ -52,16 +52,14 @@ public class ItemController {
         return "index";
     }
 
-    //跳转到新建页面
-    @RequestMapping("/new")
-    public String toNew(){
-        return "new";
-    }
 
     //根据筛选条件查询物料
     @RequestMapping("/select")
     public String getBySelection(@RequestParam(value = "pn",defaultValue = "1")Integer pn,
-                                 Model model, HttpServletRequest req, HttpSession session) throws ParseException {
+                                 Model model,
+                                 HttpServletRequest req,
+                                 HttpSession session,
+                                 @RequestParam(value = "pageSize",defaultValue = "5")Integer pageSize) throws ParseException {
 
         Item item = new Item();
 
@@ -93,7 +91,7 @@ public class ItemController {
 
         System.out.println(item.toString());
         //分页查询
-        PageHelper.startPage(pn,3);
+        PageHelper.startPage(pn,pageSize);
         List<Item> items = itemService.getBySelection(item);
 
         //存入model前，去除模糊查询，用于分页跳转
@@ -108,6 +106,7 @@ public class ItemController {
 
         PageInfo pageInfo = new PageInfo(items,5);
         model.addAttribute("pageInfo",pageInfo);
+
 
         System.out.println(pageInfo.toString());
         System.out.println("************************");
@@ -170,8 +169,10 @@ public class ItemController {
      */
     @ResponseBody
     @RequestMapping(value="/item/{itemId}",method=RequestMethod.PUT)
-    public Msg saveItem(Item item,HttpServletRequest request){
+    public Msg updateItem(Item item,HttpServletRequest request){
+//        item.setObjectVersionNumber(item.getObjectVersionNumber()+1L);
         System.out.println("将要更新的员工数据："+item);
+
         itemService.updateItem(item);
         return Msg.success()	;
     }
@@ -205,12 +206,43 @@ public class ItemController {
 
     //导出Excle
     @RequestMapping("/itemExcelDownloads")
-    public void itemsExcelDownloads(HttpServletResponse response) throws IOException {
+    public void itemsExcelDownloads(HttpServletResponse response,
+                                    HttpServletRequest req) throws IOException, ParseException {
+        Item item = new Item();
+
+        //只导出符合当前筛选条件的数据
+        //模糊查询物料编码
+        if(req.getParameter("itemCode")!=null && !"".equals(req.getParameter("itemCode"))){
+            item.setItemCode("%"+req.getParameter("itemCode")+"%");
+
+        }
+        //模糊查询描述
+        if(req.getParameter("itemDescription")!=null && !"".equals(req.getParameter("itemDescription"))){
+            item.setItemDescription("%"+req.getParameter("itemDescription")+"%");
+        }
+        if(req.getParameter("itemUom")!=null && !"".equals(req.getParameter("itemUom"))){
+            item.setItemUom(req.getParameter("itemUom"));
+        }
+        if(req.getParameter("startActiveDate")!=null && !"".equals(req.getParameter("startActiveDate"))){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            item.setStartActiveDate(sdf.parse(req.getParameter("startActiveDate")));
+        }
+        if(req.getParameter("endActiveDate")!=null && !"".equals(req.getParameter("endActiveDate"))){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            item.setEndActiveDate(sdf.parse(req.getParameter("endActiveDate")));
+        }
+        if(req.getParameter("enabledFlag")!=null && !"".equals(req.getParameter("enabledFlag"))){
+            item.setEnabledFlag(Boolean.valueOf(req.getParameter("enabledFlag")));
+        }
+
+
+        System.out.println(item.toString());
+        //分页查询
+        List<Item> items = itemService.getBySelection(item);
 
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("物料信息表");
 
-        List<Item> items = itemService.getAll();
 
         //设置要导出的文件的名字
         String fileName = "items"+UUID.randomUUID().toString().substring(0,10) + ".xls";
@@ -232,15 +264,20 @@ public class ItemController {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //在表中存放查询到的数据放入对应的列
-        for (Item item : items) {
+        for (Item itemTemp : items) {
             HSSFRow row1 = sheet.createRow(rowNum);
 
-            row1.createCell(0).setCellValue(item.getItemCode());
-            row1.createCell(1).setCellValue(item.getItemDescription());
-            row1.createCell(2).setCellValue(item.getItemUom());
-            row1.createCell(3).setCellValue(sdf.format(item.getStartActiveDate()));
-            row1.createCell(4).setCellValue(sdf.format(item.getEndActiveDate()));
-            row1.createCell(5).setCellValue(item.getEnabledFlag());
+            row1.createCell(0).setCellValue(itemTemp.getItemCode());
+            row1.createCell(1).setCellValue(itemTemp.getItemDescription());
+            row1.createCell(2).setCellValue(itemTemp.getItemUom());
+            //防止空指针异常
+            if (itemTemp.getStartActiveDate() != null) {
+                row1.createCell(3).setCellValue(sdf.format(itemTemp.getStartActiveDate()));
+            }
+            if(itemTemp.getEndActiveDate() != null){
+                row1.createCell(4).setCellValue(sdf.format(itemTemp.getEndActiveDate()));
+            }
+            row1.createCell(5).setCellValue(itemTemp.getEnabledFlag());
             rowNum++;
         }
 

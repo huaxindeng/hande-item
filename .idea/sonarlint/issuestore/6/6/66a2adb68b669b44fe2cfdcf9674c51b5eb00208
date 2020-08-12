@@ -1,5 +1,5 @@
 
-N	java:S106 "9Replace this use of System.out or System.err by a logger.(öó’æ
 8
 java:S1700"Rename field "itemMapperTest"(ºŒ·Øÿÿÿÿÿ
-S	java:S106"9Replace this use of System.out or System.err by a logger.(½ùÎƒÿÿÿÿÿ
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(½ùÎƒÿÿÿÿÿ8ğœÎ‚¾.
+U	java:S106 "9Replace this use of System.out or System.err by a logger.(öó’æ8ğœÎ‚¾.
